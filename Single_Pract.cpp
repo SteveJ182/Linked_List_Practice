@@ -1,59 +1,43 @@
 #include <iostream>
 using namespace std;
-struct Node{
-  int value;
-  struct Node * next; //next is a struct and the * mean to connect to the next Node
-  
-}
+//each node consits of a data item and an address of another node
 
-class LinkedList{
+class Node{
   public:
-  LinkedList(){
-    //it does not matter the order the variable are made as we can call private varibale in public
-    head = nullptr;
-    tail = nullptr;
+  int data;  //data item
+  Node* next; //pointer to another struct node
+
+  //Constructor to intialize the node with data
+  Node(int new_data){
+    this->data=new_data;
+    this->next = nullptr;
   }
-  
-  //function to add a nose to the linked list, should be added next to tail/ point to tail
-  void createNode(int value)
-  {
-    node *temp = new Node;
-    temp->data = value;
-    temp->next = nullptr;
-    
-      //checks if list is empty
-      if(head == nulptr){
-        head = temp;
-        tail = temp;
-      }
-      //if not then assigns value
-      else{
-        tail->next = temp;
-        tail=temp;
-      }
-      
-  }
-  
-  //function to iterate through the list
-  void printList(){
-    Node * current = head;
-    //once a nullptr is found the list is the end/tail and knows to stop
-    while(current != nullptr){
-      cout << curent->value << endl;
-      current = current->next;
-    }
-  }
-  
-  
-  private:
-  Node *head;
-  Node *tail;
-  
+
 };
+
+// Function to traverse and print the singly linked list
+void traverseList(Node* head){
+  //A loop that runs till head is nullptr
+  while(head!=nullptr){
+    //printing data of current node
+    cout<< head->data << " ";
+    //Moving to next node
+    head = head->next;
+  }
+  cout << endl;
+}
 
 
 int main() 
 {
-    cout << "Hello, World!";
-    return 0;
+  //hard-coded linked list:
+  //10 -> 20 -> 30 -> 40
+  Node* head = new Node(10);  // assigns value of 10 to data at head of list, This also assigns the next value or the tail to null 
+  head->next = new Node(20);  //assigns the tail value to 20 and makes a new tail value null
+  head->next->next = new Node(30);  //assigns the tail value from prior to 30 and makes a new tail value to null
+  head->next->next->next = new Node(40); // assigns the tail value from proir to 30 and makes a new tail value to null
+
+  traverseList(head);
+  
+  return 0;
 }
