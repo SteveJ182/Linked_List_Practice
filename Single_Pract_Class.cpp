@@ -27,6 +27,21 @@ void traverseList(Node* head){
   cout << endl;
 }
 
+//Function to traverse list recursively 
+void recursive(Node* head){
+  //Base condition is when the head is nullptr
+  if(head == nullptr){
+    cout << endl;
+    return;
+  }
+  //printing the current node data
+  cout << head->data << " ";
+  //Moving to the next node
+  recursive(head->next);
+  
+}
+
+
 
 int main() 
 {
@@ -38,6 +53,6 @@ int main()
   head->next->next->next = new Node(40); // assigns the tail value from proir to 30 and makes a new tail value to null
 
   traverseList(head);
-  
+  recursive(head);
   return 0;
 }
