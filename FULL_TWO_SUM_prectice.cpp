@@ -5,11 +5,30 @@ using namespace std;
 
 // Definition for singly-linked list.
 struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
+    int val;//data to store
+    ListNode *next; //poinrt to next node in list
+    ListNode() : val(0), next(nullptr) {} //default constructor
+    /*Similar to
+    ListNode(){
+      val =0;
+      next = nullptr;
+    }
+    */
     ListNode(int x) : val(x), next(nullptr) {}
+    /*Similar to
+    ListNode(int x){
+      val =x;
+      next = nullptr;
+    }
+    */
+    
     ListNode(int x, ListNode *next) : val(x), next(next) {}
+    /*Similar to
+    ListNode(int x, ListNode *next){
+      val =x;
+      next = next;
+    }
+    */
 };
 
 class Solution {
