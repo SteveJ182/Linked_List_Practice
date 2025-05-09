@@ -10,9 +10,6 @@
  */
 class Solution {
 public:
-    void recursive(){
-
-    }
 
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode* tail = new ListNode(0);//assigns a tail to a new linked list
@@ -20,20 +17,15 @@ public:
         int carry=0;
 
         //checks if at tail of nodes
-        while(l1!=nullptr && l2!=nullptr){
+        while(l1!=nullptr || l2!=nullptr || carry!=0){
             int sum = carry;
-            if(l1!=nullptr && l2!=nullptr){
+            if(l1){
                 sum += l1->val;
                 l1=l1->next; //changes to next node
+            }
+            if(l2){
                 sum += l2 -> val;
                 l2 = l2->next;
-            }
-            else if (!l1){
-                
-                continue;
-            }
-            else if(!l2){
-                continue;
             }
             carry = sum/10;
             head -> next = new ListNode(sum%10); //builds next node
@@ -41,6 +33,5 @@ public:
 
         }
         return tail->next;
-
     }
 };
